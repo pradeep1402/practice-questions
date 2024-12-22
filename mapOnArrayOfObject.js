@@ -136,4 +136,30 @@ const normalizeScores = function (objects) {
   return objects.map(function ({ score }) { return score / 100; });
 };
 
-console.log(normalizeScores([{ name: "Alice", score: 80 }, { name: "Bob", score: 100 }]));
+// console.log(normalizeScores([{ name: "Alice", score: 80 }, { name: "Bob", score: 100 }]));
+
+
+// calculate ranks (1-based, descending) for scores in [{ name: "Alice", score: 80 }, { name: "Bob", score: 100 }, { name: "Charlie", score: 90 }] => [3, 1, 2]
+const getRanksList = function (scores) {
+  const ranks = Array(scores.length);
+  const lists = [...scores];
+
+  for (let index = 1; index <= lists.length; index++) {
+    const max = Math.max(...lists);
+    const maxIndex = lists.findIndex(function (number) {
+      return number === max;
+    });
+    lists[maxIndex] = -Infinity;
+    ranks[maxIndex] = index;
+  }
+
+  return ranks;
+};
+
+const calculateRanks = function (objects) {
+  const listOfScore = normalizeScores(objects);
+
+  return getRanksList(listOfScore);
+};
+
+console.log(calculateRanks([{ name: "Alice", score: 80 }, { name: "Bob", score: 100 }, { name: "Charlie", score: 90 }]));
