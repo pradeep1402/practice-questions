@@ -34,4 +34,21 @@ const reversedStringsOf = function (strings) {
   return strings.map(function (word) { return reverse(word); });
 };
 
-console.log(reversedStringsOf(["hello", "world"]));
+// console.log(reversedStringsOf(["hello", "world"]));
+
+// double letters of ["cat", "dog", "bat"] => ["ccaat", "ddoog", "bbaatt"]
+const doubleLetter = function (letters) {
+  let newString = '';
+
+  for (const letter of letters) {
+    newString += letter.repeat(2);
+  }
+
+  return newString;
+};
+
+const doubleLettersOf = function (strings) {
+  return strings.map(function (word) { return doubleLetter([...word]); });
+};
+
+console.log(doubleLettersOf(["cat", "dog", "bat"]));

@@ -17,7 +17,7 @@ const truthValuesOf = function (numbers) { };
 // reverse strings of ["hello", "world"] => ["olleh", "dlrow"]
 const reversedStringsOf = function (strings) { };
 
-// double letters of ["cat", "dog", "bat"] => ["ccaat", "ddoog", "bbaatt"]
+// double letters of ["cat", "dog", "bat"] => ["ccaatt", "ddoogg", "bbaatt"]
 const doubleLettersOf = function (strings) { };
 
 // boolean negation of [true, false, true] => [false, true, false]
