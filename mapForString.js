@@ -161,4 +161,26 @@ const uniqueCharactersOf = function (strings) {
   return strings.map(getUniqueLetters);
 };
 
-console.log(uniqueCharactersOf(["apple", "banana", "grape"]));
+// console.log(uniqueCharactersOf(["apple", "banana", "grape"]));
+
+// capitalize first letters of ["hello world", "goodbye moon"] => ["Hello World", "Goodbye Moon"]
+const getFirstLetterCapital = function ([firstLetter, ...letters]) {
+  return [firstLetter.toUpperCase(), ...letters].join("");
+};
+
+const getTitleWord = function (string) {
+  const words = string.split(" ");
+  const pascalCase = [];
+
+  for (const word of words) {
+    pascalCase.push(getFirstLetterCapital(word));
+  }
+
+  return pascalCase.join(" ");
+};
+
+const capitalizedFirstLettersOf = function (strings) {
+  return strings.map(getTitleWord);
+};
+
+console.log(capitalizedFirstLettersOf(["hello world", "goodbye moon"]));
