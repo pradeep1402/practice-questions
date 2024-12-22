@@ -17,4 +17,13 @@ const firstLettersOfNames = function (objects) {
   return objects.map(function (person) { return person.name.at(0); });
 };
 
-console.log(firstLettersOfNames([{ name: "Alice" }, { name: "Bob" }]));
+// console.log(firstLettersOfNames([{ name: "Alice" }, { name: "Bob" }]));
+
+// calculate areas from [{ width: 2, height: 3 }, { width: 4, height: 5 }] => [6, 20]
+const calculateAreas = function (rectangles) {
+  return rectangles.map(function (rectangle) {
+    return rectangle.width * rectangle.height;
+  });
+};
+
+console.log(calculateAreas([{ width: 2, height: 3 }, { width: 4, height: 5 }]));
