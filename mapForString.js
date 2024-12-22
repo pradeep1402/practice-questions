@@ -70,4 +70,11 @@ const splitWordsOf = function (strings) {
   });
 };
 
-console.log(splitWordsOf(["hello world", "goodbye moon"]));
+// console.log(splitWordsOf(["hello world", "goodbye moon"]));
+
+// join arrays of [["a", "b"], ["c", "d"]] => ["ab", "cd"]
+const joinedArraysOf = function (arrayOfArrays) {
+  return arrayOfArrays.map(function (array) { return array.join(""); });
+};
+
+console.log(joinedArraysOf([["a", "b"], ["c", "d"]]));
