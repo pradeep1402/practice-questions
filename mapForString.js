@@ -20,7 +20,7 @@ const firstCharactersOf = function (strings) {
 // console.log(firstCharactersOf(["apple", "banana", "kiwi"]));
 
 // reverse strings of ["hello", "world"] => ["olleh", "dlrow"]
-const reverse = function (word) {
+const reverseString = function (word) {
   let reversedWord = '';
 
   for (let index = 0; index < word.length; index++) {
@@ -31,7 +31,7 @@ const reverse = function (word) {
 };
 
 const reversedStringsOf = function (strings) {
-  return strings.map(function (word) { return reverse(word); });
+  return strings.map(function (word) { return reverseString(word); });
 };
 
 // console.log(reversedStringsOf(["hello", "world"]));
@@ -105,7 +105,7 @@ const countVowelsOf = function (strings) {
   return strings.map(countVowel);
 };
 
-console.log(countVowelsOf(["apple", "banana", "grape"]));
+// console.log(countVowelsOf(["apple", "banana", "grape"]));
 
 // remove vowels from ["apple", "banana", "grape"] => ["ppl", "bnn", "grp"]
 const removeVowels = function ([...letters]) {
@@ -124,4 +124,21 @@ const withoutVowelsOf = function (strings) {
   return strings.map(removeVowels);
 };
 
-console.log(withoutVowelsOf(["apple", "banana", "grape"]));
+// console.log(withoutVowelsOf(["apple", "banana", "grape"]));
+
+// reverse words in ["hello world", "goodbye moon"] => ["olleh dlrow", "eybdoog noom"]
+const reverseArrayOfString = function (string) {
+  const words = string.split(" ");
+  const reversedWords = [];
+
+  for (const word of words) {
+    reversedWords.push(reverseString(word));
+  }
+
+  return reversedWords.join(" ");
+};
+const reversedWordsOf = function (strings) {
+  return strings.map(reverseArrayOfString);
+};
+
+console.log(reversedWordsOf(["hello world", "goodbye moon"]));
