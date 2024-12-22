@@ -232,4 +232,19 @@ const normalizeStringLengths = function (strings) {
   return strings.map(function (string) { return string.padEnd(maxLength); });
 };
 
-console.log(normalizeStringLengths(["cat", "elephant", "dog"]));
+// console.log(normalizeStringLengths(["cat", "elephant", "dog"]));
+
+// normalize strings by centering them based on the longest string length in ["cat", "elephant", "dog"] => ["  cat   ", "elephant", "  dog   "]
+// (pad with spaces to justify to the center)
+const centerJustifyStrings = function (strings) {
+  const maxLength = strings.reduce(getMaxLength, 0);
+
+  return strings.map(function (word) {
+    const spacesCount = Math.floor((maxLength - word.length) / 2);
+    const string = word.padStart(word.length + spacesCount)
+
+    return string.padEnd(string.length + spacesCount);
+  });
+};
+
+console.log(centerJustifyStrings(["cat", "elephant", "dog"]));
