@@ -129,4 +129,11 @@ const splitFullNames = function (objects) {
   });
 };
 
-console.log(splitFullNames([{ name: "Alice Smith" }, { name: "Bob Brown" }]));
+// console.log(splitFullNames([{ name: "Alice Smith" }, { name: "Bob Brown" }]));
+
+// normalize scores so they fall between 0 and 1 based on the max score from [{ name: "Alice", score: 80 }, { name: "Bob", score: 100 }] => [0.8, 1]
+const normalizeScores = function (objects) {
+  return objects.map(function ({ score }) { return score / 100; });
+};
+
+console.log(normalizeScores([{ name: "Alice", score: 80 }, { name: "Bob", score: 100 }]));
