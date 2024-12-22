@@ -21,8 +21,8 @@ const firstLettersOfNames = function (objects) {
 
 // calculate areas from [{ width: 2, height: 3 }, { width: 4, height: 5 }] => [6, 20]
 const calculateAreas = function (rectangles) {
-  return rectangles.map(function (rectangle) {
-    return rectangle.width * rectangle.height;
+  return rectangles.map(function ({ width, height }) {
+    return width * height;
   });
 };
 
