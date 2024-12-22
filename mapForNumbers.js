@@ -38,4 +38,21 @@ const cumulativeSumsOf = function (arrays) {
   return arrays.map(runningSum);
 };
 
-console.log(cumulativeSumsOf([[1, 2, 3], [4, 5, 6]]));
+// console.log(cumulativeSumsOf([[1, 2, 3], [4, 5, 6]]));
+
+// generate ranges from [3, 5, 2] => [[0, 1, 2], [0, 1, 2, 3, 4], [0, 1]]
+const getRangeList = function (number) {
+  const list = [];
+
+  for (let index = 0; index < number; index++) {
+    list.push(index);
+  }
+
+  return list;
+};
+
+const rangesOf = function (numbers) {
+  return numbers.map(getRangeList);
+};
+
+console.log(rangesOf([3, 5, 2]));
