@@ -183,4 +183,17 @@ const capitalizedFirstLettersOf = function (strings) {
   return strings.map(getTitleWord);
 };
 
-console.log(capitalizedFirstLettersOf(["hello world", "goodbye moon"]));
+// console.log(capitalizedFirstLettersOf(["hello world", "goodbye moon"]));
+
+// find word lengths in ["apple pie", "banana split"] => [[5, 3], [6, 5]]
+const getWordsLength = function (string) {
+  const words = string.split(" ");
+
+  return lengthsOf(words);
+};
+
+const wordLengthsOf = function (strings) {
+  return strings.map(getWordsLength);
+};
+
+console.log(wordLengthsOf(["apple pie", "banana split"]));
