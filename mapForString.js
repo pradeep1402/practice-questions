@@ -51,4 +51,14 @@ const doubleLettersOf = function (strings) {
   return strings.map(function (word) { return doubleLetter([...word]); });
 };
 
-console.log(doubleLettersOf(["cat", "dog", "bat"]));
+// console.log(doubleLettersOf(["cat", "dog", "bat"]));
+
+// extract domain names from ["user1@gmail.com", "admin@yahoo.com"] => ["gmail.com", "yahoo.com"]
+const domainNamesOf = function (emails) {
+  return emails.map(function (email) {
+    const sections = email.split("@");
+    return sections.at(1);
+  });
+};
+
+console.log(domainNamesOf(["user1@gmail.com", "admin@yahoo.com"]));
