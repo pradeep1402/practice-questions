@@ -207,4 +207,15 @@ const sortedLettersOf = function (strings) {
   return strings.map(getSortedLettersWord);
 };
 
-console.log(sortedLettersOf(["cat", "bat", "rat"]));
+// console.log(sortedLettersOf(["cat", "bat", "rat"]));
+
+// wrap strings in brackets ["apple", "banana"] => ["[apple]", "[banana]"]
+const wrappedWithDoubleQuotes = function (string) {
+  return "[" + string + "]";;
+};
+
+const wrappedStringsOf = function (strings) {
+  return strings.map(wrappedWithDoubleQuotes);
+};
+
+console.log(wrappedStringsOf(["apple", "banana"]));
