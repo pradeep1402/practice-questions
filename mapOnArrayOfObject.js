@@ -94,4 +94,14 @@ const extractCoordinates = function (objects) {
   return objects.map(function ({ x, y }) { return [x, y]; });
 };
 
-console.log(extractCoordinates([{ x: 1, y: 2 }, { x: 3, y: 4 }]));
+// console.log(extractCoordinates([{ x: 1, y: 2 }, { x: 3, y: 4 }]));
+
+// extract full name and age from [{ firstName: "Alice", lastName: "Smith", age: 25 }, { firstName: "Bob", lastName: "Brown", age: 30 }] => [["Alice Smith", 25], ["Bob Brown", 30]]
+const fullNameAndAge = function (objects) {
+  return objects.map(function ({ firstName, lastName, age }) {
+    const fullName = firstName + " " + lastName;
+    return [fullName, age];
+  });
+};
+
+console.log(fullNameAndAge([{ firstName: "Alice", lastName: "Smith", age: 25 }, { firstName: "Bob", lastName: "Brown", age: 30 }]));
