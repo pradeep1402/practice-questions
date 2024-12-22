@@ -57,4 +57,15 @@ const filterEvenNumbersByMembership = function (numbers, criteria) {
   return filterByMembership(numbers, criteria).filter(isEven);
 };
 
-console.log(filterEvenNumbersByMembership([1, 2, 3, 4, 5], [2, 4, 6]));
+// console.log(filterEvenNumbersByMembership([1, 2, 3, 4, 5], [2, 4, 6]));
+
+// Find numbers that are marked as 'valid' in the lookup object.
+// Input: [10, 20, 30, 40], {10: "valid", 20: "invalid", 30: "valid", 40: "valid"}
+// Output: [10, 30, 40]
+const findValidNumbers = function (numbers, lookup) {
+  return numbers.filter(function (number) {
+    return lookup[number] === "valid";
+  });
+};
+
+console.log(findValidNumbers([10, 20, 30, 40], { 10: "valid", 20: "invalid", 30: "valid", 40: "valid" }));
