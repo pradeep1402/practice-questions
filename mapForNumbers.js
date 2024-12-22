@@ -55,4 +55,21 @@ const rangesOf = function (numbers) {
   return numbers.map(getRangeList);
 };
 
-console.log(rangesOf([3, 5, 2]));
+// console.log(rangesOf([3, 5, 2]));
+
+// flatten nested arrays of [[1, [2, 3]], [4, [5, 6]]] => [[1, 2, 3], [4, 5, 6]]
+const flattenArray = function (array) {
+  let list = [];
+
+  for (const element of array) {
+    !Array.isArray(element) ? list.push(element) : list = [...list, ...element];
+  }
+
+  return list;
+};
+
+const flattenedArraysOf = function (arrays) {
+  return arrays.map(flattenArray);
+};
+
+console.log(flattenedArraysOf([[1, [2, 3]], [4, [5, 6]]]));
