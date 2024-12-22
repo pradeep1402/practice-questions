@@ -218,4 +218,18 @@ const wrappedStringsOf = function (strings) {
   return strings.map(wrappedWithDoubleQuotes);
 };
 
-console.log(wrappedStringsOf(["apple", "banana"]));
+// console.log(wrappedStringsOf(["apple", "banana"]));
+
+// normalize strings by the longest string length in ["cat", "elephant", "dog"] => ["cat    ", "elephant", "dog    "]
+// (pad with spaces to match the longest length)
+const getMaxLength = function (maxLength, string) {
+  return maxLength >= string.length ? maxLength : string.length;
+};
+
+const normalizeStringLengths = function (strings) {
+  const maxLength = strings.reduce(getMaxLength, 0);
+
+  return strings.map(function (string) { return string.padEnd(maxLength); });
+};
+
+console.log(normalizeStringLengths(["cat", "elephant", "dog"]));
