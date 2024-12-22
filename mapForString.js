@@ -18,3 +18,20 @@ const firstCharactersOf = function (strings) {
 };
 
 // console.log(firstCharactersOf(["apple", "banana", "kiwi"]));
+
+// reverse strings of ["hello", "world"] => ["olleh", "dlrow"]
+const reverse = function (word) {
+  let reversedWord = '';
+
+  for (let index = 0; index < word.length; index++) {
+    reversedWord = word[index] + reversedWord;
+  }
+
+  return reversedWord;
+};
+
+const reversedStringsOf = function (strings) {
+  return strings.map(function (word) { return reverse(word); });
+};
+
+console.log(reversedStringsOf(["hello", "world"]));
