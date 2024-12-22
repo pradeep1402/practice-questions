@@ -113,4 +113,11 @@ const extractScores = function (objects) {
   });
 };
 
-console.log(extractScores([{ name: "Alice", scores: { math: 90, english: 85 } }, { name: "Bob", scores: { math: 80, english: 75 } }]));
+// console.log(extractScores([{ name: "Alice", scores: { math: 90, english: 85 } }, { name: "Bob", scores: { math: 80, english: 75 } }]));
+
+// extract key-value pairs from [{ key: "a", value: 1 }, { key: "b", value: 2 }] => [["a", 1], ["b", 2]]
+const keyValuePairs = function (objects) {
+  return objects.map(function ({ key, value }) { return [key, value]; });
+};
+
+console.log(keyValuePairs([{ key: "a", value: 1 }, { key: "b", value: 2 }]));
