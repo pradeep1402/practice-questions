@@ -60,4 +60,22 @@ const isAdult = function (objects) {
   return objects.map(function ({ age }) { return age >= 18; });
 };
 
-console.log(isAdult([{ name: "Alice", age: 17 }, { name: "Bob", age: 22 }]));
+// console.log(isAdult([{ name: "Alice", age: 17 }, { name: "Bob", age: 22 }]));
+
+// create abbreviations from [{ city: "New York", country: "USA" }, { city: "Los Angeles", country: "USA" }] => ["NY, USA", "LA, USA"]
+const firstCharactersOf = function (strings) {
+  return strings.map(function (word) { return word.at(0); });
+};
+
+const getAbbreviated = function ({ city, country }) {
+  const strings = city.split(" ");
+  const abbreviatedCity = firstCharactersOf(strings).join("");
+
+  return abbreviatedCity + " " + country;
+};
+
+const abbreviations = function (objects) {
+  return objects.map(getAbbreviated);
+};
+
+console.log(abbreviations([{ city: "New York", country: "USA" }, { city: "Los Angeles", country: "USA" }]));
