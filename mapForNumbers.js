@@ -59,13 +59,7 @@ const rangesOf = function (numbers) {
 
 // flatten nested arrays of [[1, [2, 3]], [4, [5, 6]]] => [[1, 2, 3], [4, 5, 6]]
 const flattenArray = function (array) {
-  let list = [];
-
-  for (const element of array) {
-    !Array.isArray(element) ? list.push(element) : list = [...list, ...element];
-  }
-
-  return list;
+  return array.flatMap(function (number) { return number; });
 };
 
 const flattenedArraysOf = function (arrays) {
