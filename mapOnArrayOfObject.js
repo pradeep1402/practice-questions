@@ -87,4 +87,11 @@ const mathScores = function (objects) {
   });
 };
 
-console.log(mathScores([{ name: "Alice", scores: { math: 90, english: 85 } }, { name: "Bob", scores: { math: 80, english: 75 } }]));
+// console.log(mathScores([{ name: "Alice", scores: { math: 90, english: 85 } }, { name: "Bob", scores: { math: 80, english: 75 } }]));
+
+// extract coordinates from [{ x: 1, y: 2 }, { x: 3, y: 4 }] => [[1, 2], [3, 4]]
+const extractCoordinates = function (objects) {
+  return objects.map(function ({ x, y }) { return [x, y]; });
+};
+
+console.log(extractCoordinates([{ x: 1, y: 2 }, { x: 3, y: 4 }]));
