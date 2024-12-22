@@ -68,4 +68,15 @@ const findValidNumbers = function (numbers, lookup) {
   });
 };
 
-console.log(findValidNumbers([10, 20, 30, 40], { 10: "valid", 20: "invalid", 30: "valid", 40: "valid" }));
+// console.log(findValidNumbers([10, 20, 30, 40], { 10: "valid", 20: "invalid", 30: "valid", 40: "valid" }));
+
+// Filter numbers from the first array that are not present in the second array
+// Input: [1, 2, 3, 4, 5], [2, 4, 6]
+// Output: [1, 3, 5]
+const filterByExclusion = function (numbers, criteria) {
+  return numbers.filter(function (number) {
+    return !criteria.includes(number);
+  });
+};
+
+console.log(filterByExclusion([1, 2, 3, 4, 5], [2, 4, 6]));

@@ -1,4 +1,4 @@
-// even numbers [1, 2, 3, 4, 5] => [2, 4]
+// even numbers [1, 2, 3, 4, 5] => [2, 4] ✅
 const filterEvenNumbers = function (numbers) { };
 
 // words with more than 5 letters ["apple", "banana", "kiwi", "grape"] => ["banana"]
@@ -10,7 +10,7 @@ const filterAdults = function (people) { };
 // active users [{username: "alice", active: true}, {username: "bob", active: false}] => [{username: "alice", active: true}]
 const filterActiveUsers = function (users) { };
 
-// numbers greater than 10 [5, 12, 7, 18, 3] => [12, 18]
+// numbers greater than 10 [5, 12, 7, 18, 3] => [12, 18] ✅
 const filterNumbersGreaterThanTen = function (numbers) { };
 
 // books with more than 200 pages [{title: "Book 1", pages: 150}, {title: "Book 2", pages: 250}] => [{title: "Book 2", pages: 250}]
@@ -238,7 +238,7 @@ const filterPostsByUserFollowersAndComments = function (posts, minFollowers, min
 // Filter users who have shared a post that has a specific hashtag and has been liked more than a set number [{user: {name: "Mia", posts: [{title: "Post 1", hashtags: ["#beach", "#sunset"], likes: 300}]}}] => [{user: {name: "Mia", posts: [{title: "Post 1", hashtags: ["#beach", "#sunset"], likes: 300}]}}]
 const filterUsersByHashtagAndLikes = function (users, hashtag, minLikes) { };
 
-// Filter numbers from the first array that are present in the second array
+// Filter numbers from the first array that are present in the second array ✅
 // Input: [1, 2, 3, 4, 5], [2, 4, 6]
 // Output: [2, 4]
 const filterByMembership = function (numbers, criteria) { };
@@ -253,7 +253,7 @@ const filterStringsByMembership = function (strings, criteria) { };
 // Output: [{id: 1, name: "apple"}]
 const filterObjectsById = function (objects, ids) { };
 
-// Filter numbers from the first array that are found in the second array, and greater than a specific threshold
+// Filter numbers from the first array that are found in the second array, and greater than a specific threshold ✅
 // Input: [1, 2, 3, 4, 5], [2, 4, 6], threshold: 3
 // Output: [4]
 const filterGreaterThanThresholdByMembership = function (numbers, criteria, threshold) { };
@@ -263,7 +263,7 @@ const filterGreaterThanThresholdByMembership = function (numbers, criteria, thre
 // Output: ["banana"]
 const filterStringsByLengthAndMembership = function (strings, criteria, length) { };
 
-// Filter numbers from the first array that are not present in the second array
+// Filter numbers from the first array that are not present in the second array✅
 // Input: [1, 2, 3, 4, 5], [2, 4, 6]
 // Output: [1, 3, 5]
 const filterByExclusion = function (numbers, criteria) { };
@@ -278,12 +278,12 @@ const filterObjectsByProperties = function (objects, properties) { };
 // Output: ["hello", "hell"]
 const filterStringsBySubstringMembership = function (strings, criteria) { };
 
-// Filter numbers from the first array that fall within a range specified by a pair in the second array
+// Filter numbers from the first array that fall within a range specified by a pair in the second array ✅
 // Input: [1, 2, 3, 4, 5], [[2, 4]]
 // Output: [2, 3, 4]
 const filterByRange = function (numbers, ranges) { };
 
-// Filter numbers from the first array that are present in the second array and are even
+// Filter numbers from the first array that are present in the second array and are even ✅
 // Input: [1, 2, 3, 4, 5], [2, 4, 6]
 // Output: [2, 4]
 const filterEvenNumbersByMembership = function (numbers, criteria) { };
@@ -293,7 +293,7 @@ const filterEvenNumbersByMembership = function (numbers, criteria) { };
 // Output: ["India", "Iran"]
 const findCountriesThatExist = function (countries, lookup) { };
 
-// Find numbers that are marked as 'valid' in the lookup object.
+// Find numbers that are marked as 'valid' in the lookup object. ✅
 // Input: [10, 20, 30, 40], {10: "valid", 20: "invalid", 30: "valid", 40: "valid"}
 // Output: [10, 30, 40]
 const findValidNumbers = function (numbers, lookup) { };
