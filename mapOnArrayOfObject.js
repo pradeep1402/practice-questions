@@ -42,4 +42,14 @@ const fullNames = function (objects) {
   });
 };
 
-console.log(fullNames([{ firstName: "Alice", lastName: "Smith" }, { firstName: "Bob", lastName: "Brown" }]));
+// console.log(fullNames([{ firstName: "Alice", lastName: "Smith" }, { firstName: "Bob", lastName: "Brown" }]));
+
+// calculate total prices from [{ price: 10, quantity: 2 }, { price: 5, quantity: 4 }] => [20, 20]
+// (price * quantity)
+const totalPrices = function (objects) {
+  return objects.map(function ({ price, quantity }) {
+    return price * quantity;
+  });
+};
+
+console.log(totalPrices([{ price: 10, quantity: 2 }, { price: 5, quantity: 4 }]));
