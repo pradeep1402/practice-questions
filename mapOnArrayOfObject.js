@@ -120,4 +120,13 @@ const keyValuePairs = function (objects) {
   return objects.map(function ({ key, value }) { return [key, value]; });
 };
 
-console.log(keyValuePairs([{ key: "a", value: 1 }, { key: "b", value: 2 }]));
+// console.log(keyValuePairs([{ key: "a", value: 1 }, { key: "b", value: 2 }]));
+
+// split full names into first and last names from [{ name: "Alice Smith" }, { name: "Bob Brown" }] => [["Alice", "Smith"], ["Bob", "Brown"]]
+const splitFullNames = function (objects) {
+  return objects.map(function ({ name }) {
+    return name.split(" ");
+  });
+};
+
+console.log(splitFullNames([{ name: "Alice Smith" }, { name: "Bob Brown" }]));
