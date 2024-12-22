@@ -25,4 +25,16 @@ const filterByMembership = function (numbers, criteria) {
   });
 };
 
-console.log(filterByMembership([1, 2, 3, 4, 5], [2, 4, 6]));
+// console.log(filterByMembership([1, 2, 3, 4, 5], [2, 4, 6]));
+
+// Filter numbers from the first array that are found in the second array, and greater than a specific threshold
+// Input: [1, 2, 3, 4, 5], [2, 4, 6], threshold: 3
+// Output: [4]
+const filterGreaterThanThresholdByMembership = function (numbers, criteria,
+  threshold) {
+  return filterByMembership(numbers, criteria).filter(function (number) {
+    return number > threshold;
+  });
+};
+
+console.log(filterGreaterThanThresholdByMembership([1, 2, 3, 4, 5], [2, 4, 6], 3));
