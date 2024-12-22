@@ -14,4 +14,15 @@ const filterNumbersGreaterThanTen = function (numbers) {
   return numbers.filter(function (number) { return number > 10; });
 };
 
-console.log(filterNumbersGreaterThanTen([5, 12, 7, 18, 3]));
+// console.log(filterNumbersGreaterThanTen([5, 12, 7, 18, 3]));
+
+// Filter numbers from the first array that are present in the second array
+// Input: [1, 2, 3, 4, 5], [2, 4, 6]
+// Output: [2, 4]
+const filterByMembership = function (numbers, criteria) {
+  return numbers.filter(function (number) {
+    return criteria.includes(number);
+  });
+};
+
+console.log(filterByMembership([1, 2, 3, 4, 5], [2, 4, 6]));
