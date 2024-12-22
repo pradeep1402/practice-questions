@@ -32,3 +32,10 @@ const countVowelsOf = function (strings) {
 };
 
 // console.log(countVowelsOf(["apple", "banana", "grape"]));
+
+// reverse arrays of [[1, 2, 3], [4, 5, 6]] => [[3, 2, 1], [6, 5, 4]]
+const reversedArraysOf = function (arrays) {
+  return arrays.map(function (numbers) { return numbers.reverse(); });
+};
+
+console.log(reversedArraysOf([[1, 2, 3], [4, 5, 6]]));
