@@ -52,4 +52,12 @@ const totalPrices = function (objects) {
   });
 };
 
-console.log(totalPrices([{ price: 10, quantity: 2 }, { price: 5, quantity: 4 }]));
+// console.log(totalPrices([{ price: 10, quantity: 2 }, { price: 5, quantity: 4 }]));
+
+// determine if a person is an adult from [{ name: "Alice", age: 17 }, { name: "Bob", age: 22 }] => [false, true]
+// (age >= 18)
+const isAdult = function (objects) {
+  return objects.map(function ({ age }) { return age >= 18; });
+};
+
+console.log(isAdult([{ name: "Alice", age: 17 }, { name: "Bob", age: 22 }]));
