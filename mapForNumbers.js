@@ -79,4 +79,13 @@ const percentageContributions = function (numbers) {
   });
 };
 
-console.log(percentageContributions([10, 20, 30]));
+// console.log(percentageContributions([10, 20, 30]));
+
+// subtract the smallest number from each number in [3, 8, 1] => [2, 7, 0]
+const subtractMin = function (numbers) {
+  const min = Math.min(...numbers);
+
+  return numbers.map(function (number) { return number - min; });
+};
+
+console.log(subtractMin([3, 8, 1]));
