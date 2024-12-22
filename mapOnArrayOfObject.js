@@ -33,4 +33,13 @@ const extractFlags = function (objects) {
   return objects.map(function ({ active }) { return active; });
 };
 
-console.log(extractFlags([{ active: true }, { active: false }]));
+// console.log(extractFlags([{ active: true }, { active: false }]));
+
+// concatenate first and last names from [{ firstName: "Alice", lastName: "Smith" }, { firstName: "Bob", lastName: "Brown" }] => ["Alice Smith", "Bob Brown"]
+const fullNames = function (objects) {
+  return objects.map(function ({ firstName, lastName }) {
+    return firstName + " " + lastName;
+  });
+};
+
+console.log(fullNames([{ firstName: "Alice", lastName: "Smith" }, { firstName: "Bob", lastName: "Brown" }]));
