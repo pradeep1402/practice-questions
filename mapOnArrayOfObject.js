@@ -78,4 +78,13 @@ const abbreviations = function (objects) {
   return objects.map(getAbbreviated);
 };
 
-console.log(abbreviations([{ city: "New York", country: "USA" }, { city: "Los Angeles", country: "USA" }]));
+// console.log(abbreviations([{ city: "New York", country: "USA" }, { city: "Los Angeles", country: "USA" }]));
+
+// extract scores for math tests from [{ name: "Alice", scores: { math: 90, english: 85 } }, { name: "Bob", scores: { math: 80, english: 75 } }] => [90, 80]
+const mathScores = function (objects) {
+  return objects.map(function ({ scores }) {
+    return scores.math;
+  });
+};
+
+console.log(mathScores([{ name: "Alice", scores: { math: 90, english: 85 } }, { name: "Bob", scores: { math: 80, english: 75 } }]));
