@@ -142,7 +142,6 @@ const normalizeStringLengths = function (strings) { };
 // normalize strings by centering them based on the longest string length in ["cat", "elephant", "dog"] => ["  cat   ", "elephant", "  dog   "]
 // (pad with spaces to justify to the center)
 const centerJustifyStrings = function (strings) { };
-// ✅
 
 // scale all numbers proportionally so the largest number becomes 100 in [20, 50, 80] => [25, 62.5, 100]
 const scaleToMax100 = function (numbers) { };
