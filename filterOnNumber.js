@@ -37,4 +37,16 @@ const filterGreaterThanThresholdByMembership = function (numbers, criteria,
   });
 };
 
-console.log(filterGreaterThanThresholdByMembership([1, 2, 3, 4, 5], [2, 4, 6], 3));
+// console.log(filterGreaterThanThresholdByMembership([1, 2, 3, 4, 5], [2, 4, 6], 3));
+
+
+// Filter numbers from the first array that fall within a range specified by a pair in the second array
+// Input: [1, 2, 3, 4, 5], [2, 4]
+// Output: [2, 3, 4]
+const filterByRange = function (numbers, ranges) {
+  return numbers.filter(function (number) {
+    return ranges[0] <= number && ranges[1] >= number;
+  });
+};
+
+console.log(filterByRange([1, 2, 3, 4, 5], [2, 4]));
