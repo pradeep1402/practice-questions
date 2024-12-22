@@ -196,4 +196,15 @@ const wordLengthsOf = function (strings) {
   return strings.map(getWordsLength);
 };
 
-console.log(wordLengthsOf(["apple pie", "banana split"]));
+// console.log(wordLengthsOf(["apple pie", "banana split"]));
+
+// sort letters in ["cat", "bat", "rat"] alphabetically => ["act", "abt", "art"]
+const getSortedLettersWord = function ([...letters]) {
+  return letters.sort().join("");
+};
+
+const sortedLettersOf = function (strings) {
+  return strings.map(getSortedLettersWord);
+};
+
+console.log(sortedLettersOf(["cat", "bat", "rat"]));
