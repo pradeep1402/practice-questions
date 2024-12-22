@@ -141,4 +141,24 @@ const reversedWordsOf = function (strings) {
   return strings.map(reverseArrayOfString);
 };
 
-console.log(reversedWordsOf(["hello world", "goodbye moon"]));
+// console.log(reversedWordsOf(["hello world", "goodbye moon"]));
+
+// extract unique characters from ["apple", "banana", "grape"] => ["aple", "ban", "grape"]
+// Maintain the order of their first appearance in each string
+const getUniqueLetters = function ([...letters]) {
+  let uniqueLetterString = '';
+
+  for (const letter of letters) {
+    if (!uniqueLetterString.includes(letter)) {
+      uniqueLetterString += letter;
+    }
+  }
+
+  return uniqueLetterString;
+};
+
+const uniqueCharactersOf = function (strings) {
+  return strings.map(getUniqueLetters);
+};
+
+console.log(uniqueCharactersOf(["apple", "banana", "grape"]));
