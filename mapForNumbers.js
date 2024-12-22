@@ -11,4 +11,24 @@ const charCodesOf = function (strings) {
   return strings.map(function (char) { return char.charCodeAt(); });
 };
 
-console.log(charCodesOf(["a", "b", "c"]));
+// console.log(charCodesOf(["a", "b", "c"]));
+
+// count vowels in ["apple", "banana", "grape"] => [2, 3, 2]
+const countVowel = function (letters) {
+  const vowels = ['a', 'e', 'i', 'o', 'u'];
+  let count = 0;
+
+  for (const letter of letters) {
+    if (vowels.includes(letter)) {
+      count++;
+    }
+  }
+
+  return count;
+};
+
+const countVowelsOf = function (strings) {
+  return strings.map(function (word) { return countVowel([...word]); });
+};
+
+// console.log(countVowelsOf(["apple", "banana", "grape"]));
