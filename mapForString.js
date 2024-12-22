@@ -85,3 +85,43 @@ const repeatedStringsOf = function (strings) {
 };
 
 // console.log(repeatedStringsOf(["hi", "bye"]));
+
+// count vowels in ["apple", "banana", "grape"] => [2, 3, 2]
+const vowels = ['a', 'e', 'i', 'o', 'u'];
+
+const countVowel = function ([...letters]) {
+  let count = 0;
+
+  for (const letter of letters) {
+    if (vowels.includes(letter)) {
+      count++;
+    }
+  }
+
+  return count;
+};
+
+const countVowelsOf = function (strings) {
+  return strings.map(countVowel);
+};
+
+console.log(countVowelsOf(["apple", "banana", "grape"]));
+
+// remove vowels from ["apple", "banana", "grape"] => ["ppl", "bnn", "grp"]
+const removeVowels = function ([...letters]) {
+  let word = '';
+
+  for (const letter of letters) {
+    if (!vowels.includes(letter)) {
+      word += letter;
+    }
+  }
+
+  return word;
+};
+
+const withoutVowelsOf = function (strings) {
+  return strings.map(removeVowels);
+};
+
+console.log(withoutVowelsOf(["apple", "banana", "grape"]));
