@@ -184,4 +184,46 @@ const filterPopularPosts = function (posts) {
   return posts.filter(({ likes }) => averageLikes < likes);
 };
 
-console.log(filterPopularPosts([{ postId: 1, likes: 100 }, { postId: 2, likes: 200 }, { postId: 3, likes: 150 }]));
+// console.log(filterPopularPosts([{ postId: 1, likes: 100 }, { postId: 2, likes: 200 }, { postId: 3, likes: 150 }]));
+
+// users who have posted more than the average number of posts [{username: "Alice", postCount: 5}, {username: "Bob", postCount: 8}, {username: "Charlie", postCount: 3}] => [{username: "Bob", postCount: 8}]
+const filterActiveUsersByPostCount = function (users) {
+  const totalPosts = users
+    .reduce((totalPosts, { postCount }) => totalPosts + postCount, 0);
+  const averagePosts = totalPosts / users.length;
+
+  return users.filter(user => user.postCount > averagePosts);
+};
+
+// console.log(filterActiveUsersByPostCount([{ username: "Alice", postCount: 5 }, { username: "Bob", postCount: 8 }, { username: "Charlie", postCount: 3 }]));
+
+// filter people older than a certain age [{name: "Alice", age: 25}, {name: "Bob", age: 30}, {name: "Charlie", age: 22}] => [{name: "Bob", age: 30}]
+const filterByAge = function (people, age) {
+  return people.filter((person) => person.age > age);
+};
+
+// console.log(filterByAge([{ name: "Alice", age: 25 }, { name: "Bob", age: 30 }, { name: "Charlie", age: 22 }], 25));
+
+// filter products that are cheaper than a given price [{name: "item1", price: 20}, {name: "item2", price: 50}, {name: "item3", price: 10}] => [{name: "item1", price: 20}, {name: "item3", price: 10}]
+const filterByPrice = function (products, price) {
+  return products.filter(product => product.price < price);
+};
+
+// console.log(filterByPrice([{ name: "item1", price: 20 }, { name: "item2", price: 50 }, { name: "item3", price: 10 }], 25));
+
+// filter students who scored above a certain grade in Math [{name: "John", grades: {math: 80, science: 90}}, {name: "Jane", grades: {math: 70, science: 85}}] => [{name: "John", grades: {math: 80, science: 90}}]
+const filterByMathGrade = function (students, grade) {
+  return students.filter(student => student.grades.math > grade);
+};
+
+// console.log(filterByMathGrade([{ name: "John", grades: { math: 80, science: 90 } }, { name: "Jane", grades: { math: 70, science: 85 } }], 70));
+
+// filter events that occur before a certain date [{name: "Event1", date: "2024-12-01"}, {name: "Event2", date: "2024-11-15"}] => [{name: "Event2", date: "2024-11-15"}]
+const filterByDate = function (events, date) { };
+
+// filter employees who earn more than a certain salary [{name: "Alice", salary: 5000}, {name: "Bob", salary: 7000}] => [{name: "Bob", salary: 7000}]
+const filterBySalary = function (employees, salary) {
+  return employees.filter(employee => employee.salary > salary);
+};
+
+console.log(filterBySalary([{ name: "Alice", salary: 5000 }, { name: "Bob", salary: 7000 }], 5000));
