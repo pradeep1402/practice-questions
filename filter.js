@@ -337,3 +337,5 @@ const findInStockItems = function (items, lookup) { };
 // Input: ["Lion", "Elephant", "Shark"], { "Lion": { habitat: "Jungle" }, "Elephant": { habitat: "Jungle" }, "Shark": { habitat: "Ocean" } } , "Jungle"
 // Output: ["Lion", "Elephant"]
 const findAnimalsByHabitat = function (animals, lookup) { };
+
+// seprated the question with similar types and solved some of them from a particular type.
