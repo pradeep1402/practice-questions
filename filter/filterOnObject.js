@@ -376,4 +376,10 @@ const filterOrdersByBalanceAndTotal = function (orders, balanceThreshold, totalT
   return orders.filter(user => user.customer.balance >= balanceThreshold && user.order.total >= totalThreshold);
 };
 
-console.log(filterOrdersByBalanceAndTotal([{ customer: { name: "Alice", balance: 1000 }, order: { total: 200 } }], 1000, 100));
+// console.log(filterOrdersByBalanceAndTotal([{ customer: { name: "Alice", balance: 1000 }, order: { total: 200 } }], 1000, 100));
+
+
+// Filter articles based on author name and publish date [{author: {name: "Alice"}, content: "Article 1", publishDate: "2021-01-01"}] => [{author: {name: "Alice"}, content: "Article 1", publishDate: "2021-01-01"}]
+const filterArticlesByAuthorAndDate = function (articles, authorName, dateThreshold) { };
+
+console.log(filterArticlesByAuthorAndDate([{ author: { name: "Alice" }, content: "Article 1", publishDate: "2021-01-01" }], "Alice", "2021-01-01"));
