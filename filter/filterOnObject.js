@@ -224,7 +224,7 @@ const filterByDate = function (events, date) {
 
   return events.filter(({ date }) => {
     const [year, month, day] = date.split("-");
-    return filterYear > year || filterMonth > month || filterDay > day;
+    return filterYear >= year && filterMonth >= month && filterDay > day;
   });
 };
 
@@ -305,4 +305,75 @@ const filterPassingGrades = function (students, passingGrade) {
 // console.log(filterPassingGrades([{ name: "Alice", grade: 90 }, { name: "Bob", grade: 55 }], 60));
 
 // Calculate VAT-inclusive prices, then filter for those over a certain threshold [{name: "item1", price: 100}, {name: "item2", price: 50}] => [{name: "item1", price: 120}]
-const filterHighPriceWithVAT = function (products, vatRate, threshold) { };
+const filterHighPriceWithVAT = function (products, vatRate, threshold) {
+  return products
+    .map(({ name, price }) => ({ name, price: price + price * vatRate / 100 }))
+    .filter(({ price }) => price > threshold);
+};
+
+// console.log(filterHighPriceWithVAT([{ name: "item1", price: 100 }, { name: "item2", price: 50 }], 20, 100));
+
+// Calculate the length of each name, then filter for names longer than a given number [{name: "Alice"}, {name: "Bob"}] => [{name: "Alice"}]
+const filterLongNames = function (people, minLength) {
+  return people.filter(({ name }) => name.length > minLength);
+};
+
+// console.log(filterLongNames([{ name: "Alice" }, { name: "Bob" }], 3));
+
+// Normalize scores to a standard range, then filter for students who passed [{name: "John", score: 50}, {name: "Jane", score: 80}] => [{name: "Jane", score: 80}]
+const filterNormalizedScores = function (students, minScore) {
+  return students.filter(({ score }) => score > minScore);
+};
+
+// console.log(filterNormalizedScores([{ name: "John", score: 50 }, { name: "Jane", score: 80 }], 60));
+
+// Convert book publication dates, then filter for books published after a given year [{title: "Book1", year: 2020}, {title: "Book2", year: 2022}] => [{title: "Book2", year: 2022}]
+const filterRecentBooks = function (books, yearThreshold) {
+  return books.filter(({ year }) => year > yearThreshold);
+};
+
+// console.log(filterRecentBooks([{ title: "Book1", year: 2020 }, { title: "Book2", year: 2022 }], 2020));
+
+// Count the number of posts for each user, then filter for users with more than a specific number of posts [{username: "Alice", posts: 100}, {username: "Bob", posts: 50}] => [{username: "Alice", posts: 100}]
+const filterActivePosters = function (users, postThreshold) {
+  return users.filter(({ posts }) => posts > postThreshold);
+};
+
+// console.log(filterActivePosters([{ username: "Alice", posts: 100 }, { username: "Bob", posts: 50 }], 50));
+
+// Convert students' grades to letter grades, then filter for students who received a specific grade [{name: "Alice", grade: 90}, {name: "Bob", grade: 85}] => [{name: "Alice", grade: 90}]
+const filterSpecificGrade = function (students, minGrade) {
+  return students.filter(({ grade }) => grade > minGrade);
+};
+
+// console.log(filterSpecificGrade([{ name: "Alice", grade: 90 }, { name: "Bob", grade: 85 }], 85));
+
+
+// Filter products based on category and price threshold [{category: {type: "electronics"}, name: "Laptop", price: 800}, {category: {type: "furniture"}, name: "Chair", price: 150}] => [{category: {type: "electronics"}, name: "Laptop", price: 800}]
+const filterByCategoryAndPrice = function (products, category, maxPrice) {
+  return products
+    .filter(product => product.category.type === category && product.price > maxPrice);
+};
+
+// console.log(filterByCategoryAndPrice([{ category: { type: "electronics" }, name: "Laptop", price: 800 }, { category: { type: "furniture" }, name: "Chair", price: 150 }], "electronics", 600));
+
+// Filter users based on their activity level and registration date [{profile: {username: "Alice", status: "active"}, registration: {date: "2020-05-01"}}] => [{profile: {username: "Alice", status: "active"}, registration: {date: "2020-05-01"}}]
+const filterActiveUsersByDate = function (users, status, dateThreshold) {
+  const [filterYear, filterMonth, filterDay] = dateThreshold.split("-");
+
+  return users.filter(user => {
+    const [year, month, day] = user.registration.date.split("-");
+    return filterYear <= year && filterMonth <= month && filterDay <= day &&
+      user.profile.status;
+  });
+};
+
+// console.log(filterActiveUsersByDate([{ profile: { username: "Alice", status: "active" }, registration: { date: "2020-05-01" } }], "active", "2020-01-01"));
+
+
+// Filter orders where the customer's balance is above a certain threshold and the order total is under a certain amount [{customer: {name: "Alice", balance: 1000}, order: {total: 200}}] => [{customer: {name: "Alice", balance: 1000}, order: {total: 200}}]
+const filterOrdersByBalanceAndTotal = function (orders, balanceThreshold, totalThreshold) {
+  return orders.filter(user => user.customer.balance >= balanceThreshold && user.order.total >= totalThreshold);
+};
+
+console.log(filterOrdersByBalanceAndTotal([{ customer: { name: "Alice", balance: 1000 }, order: { total: 200 } }], 1000, 100));
