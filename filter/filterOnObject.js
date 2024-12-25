@@ -396,3 +396,64 @@ const filterArticlesByAuthorAndDate = function (articles, authorName,
 };
 
 // console.log(filterArticlesByAuthorAndDate([{ author: { name: "Alice" }, content: "Article 1", publishDate: "2021-01-01" }], "Alice", "2021-01-01"));
+
+// Filter courses by instructor name and course rating [{instructor: {name: "John"}, course: {rating: 4.5}}] => [{instructor: {name: "John"}, course: {rating: 4.5}}]
+const filterCoursesByInstructorAndRating = function (courses, instructorName, ratingThreshold) {
+  return courses.filter(course => course.instructor.name === instructorName && course.course.rating === ratingThreshold);
+};
+
+// console.log(filterCoursesByInstructorAndRating([{ instructor: { name: "John" }, course: { rating: 4.5 } }], "John", 4.5));
+
+// Filter projects by team size and completion status [{team: {members: ["Alice", "Bob"], size: 2}, project: {completed: false}}] => [{team: {members: ["Alice", "Bob"], size: 2}, project: {completed: false}}]
+const filterProjectsByTeamSizeAndStatus = function (projects, teamSizeThreshold, status) {
+  return projects.filter(project => project.team.size === teamSizeThreshold && project.project.completed === status);
+};
+
+// console.log(filterProjectsByTeamSizeAndStatus([{ team: { members: ["Alice", "Bob"], size: 2 }, project: { completed: false } }], 2, false));
+
+// Filter job candidates based on years of experience and their skills [{skills: {languages: ["JavaScript", "Python"]}, experience: {years: 5}}] => [{skills: {languages: ["JavaScript", "Python"]}, experience: {years: 5}}]
+const filterCandidatesByExperienceAndSkills = function (candidates, experienceThreshold, requiredSkills) {
+  const sortedSkills = requiredSkills.sort();
+
+  return candidates.filter(candidate => {
+    const sortedCandidateSkills = candidate.skills.languages.sort();
+
+    for (let index = 0; index < sortedCandidateSkills.length; index++) {
+      if (!(sortedCandidateSkills[index] === sortedSkills[index])) {
+        return false;
+      }
+    }
+
+    return candidate.experience.years === experienceThreshold;
+  });
+};
+
+
+//Similar
+// Filter events based on location and date [{location: {city: "New York"}, date: {eventDate: "2022-07-01"}}] => [{location: {city: "New York"}, date: {eventDate: "2022-07-01"}}]
+const filterEventsByLocationAndDate = function (events, city, dateThreshold) { };
+
+// Filter customers based on region and membership status [{region: {country: "USA", state: "California"}, membership: {status: "gold"}}] => [{region: {country: "USA", state: "California"}, membership: {status: "gold"}}]
+const filterCustomersByRegionAndStatus = function (customers, region, status) { };
+
+// Filter tasks based on assignee's role and priority level [{assignee: {role: "developer"}, task: {priority: "high"}}] => [{assignee: {role: "developer"}, task: {priority: "high"}}]
+const filterTasksByRoleAndPriority = function (tasks, role, priorityLevel) { };
+
+// Filter users who have a certain number of followers and have posted in the last 30 days [{user: {name: "Tom", followers: 1000, lastPostDate: "2024-11-10"}}] => [{user: {name: "Tom", followers: 1000, lastPostDate: "2024-11-10"}}]
+const filterRecentlyActiveUsers = function (users, minFollowers, daysAgo) { };
+
+// Filter posts that have a certain number of comments and are from a specific location [{post: {title: "Post 1", comments: 150, location: "Paris"}}] => [{post: {title: "Post 1", comments: 150, location: "Paris"}}]
+const filterPostsByCommentsAndLocation = function (posts, minComments, location) { };
+
+// Filter users who follow a certain number of accounts and have at least one post in the last week [{user: {name: "Jake", following: 200, lastPostDate: "2024-12-10"}}] => [{user: {name: "Jake", following: 200, lastPostDate: "2024-12-10"}}]
+const filterUsersByFollowingAndRecentPosts = function (users, minFollowing, daysAgo) { };
+
+// Filter posts from users who have more than a certain number of followers and at least one post with over a set number of comments [{post: {user: {name: "Chris", followers: 1200}, comments: 350}}] => [{post: {user: {name: "Chris", followers: 1200}, comments: 350}}]
+const filterPostsByUserFollowersAndComments = function (posts, minFollowers, minComments) { };
+
+// Filter users who have shared a post that has a specific hashtag and has been liked more than a set number [{user: {name: "Mia", posts: [{title: "Post 1", hashtags: ["#beach", "#sunset"], likes: 300}]}}] => [{user: {name: "Mia", posts: [{title: "Post 1", hashtags: ["#beach", "#sunset"], likes: 300}]}}]
+const filterUsersByHashtagAndLikes = function (users, hashtag, minLikes) { };
+
+//Not understandable but looks similar
+// Filter teams where at least one member is from a specific department [{team: {name: "Dev Team", members: [{name: "Alice", department: "Engineering"}, {name: "Bob", department: "Marketing"}]}}] => [{team: {name: "Dev Team", members: [{name: "Alice", department: "Engineering"}, {name: "Bob", department: "Marketing"}]}}]
+const filterTeamsByDepartment = function (teams, department) { };
