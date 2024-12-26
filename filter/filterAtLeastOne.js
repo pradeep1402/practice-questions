@@ -114,38 +114,85 @@ const filterUsersByPostLikes = function (users, minLikes) {
   return users.filter(({ user }) => user.posts.some(({ likes }) => likes > minLikes));
 };
 
-console.log(filterUsersByPostLikes([{ user: { name: "John", posts: [{ title: "Post 1", likes: 150 }, { title: "Post 2", likes: 20 }] } }], 100));
+// console.log(filterUsersByPostLikes([{ user: { name: "John", posts: [{ title: "Post 1", likes: 150 }, { title: "Post 2", likes: 20 }] } }], 100));
 
-// Similar
 // Filter cities where at least one attraction is in a specific category [{city: {name: "Paris", attractions: [{name: "Eiffel Tower", category: "landmark"}, {name: "Louvre", category: "museum"}]}}] => [{city: {name: "Paris", attractions: [{name: "Eiffel Tower", category: "landmark"}, {name: "Louvre", category: "museum"}]}}]
-const filterCitiesByAttractionCategory = function (cities, category) { };
+const filterCitiesByAttractionCategory = function (cities, category) {
+  return cities.filter(({ city }) => city.attractions.some(attraction => attraction.category === category));
+};
+
+// console.log(filterCitiesByAttractionCategory([{ city: { name: "Paris", attractions: [{ name: "Eiffel Tower", category: "landmark" }, { name: "Louvre", category: "museum" }] } }], "landmark"));
 
 // Filter courses where at least one student is enrolled in more than one course [{course: {name: "JavaScript", students: [{name: "Tom", enrolledCourses: ["Math", "JavaScript"]}, {name: "Alice", enrolledCourses: ["JavaScript"]}]}}] => [{course: {name: "JavaScript", students: [{name: "Tom", enrolledCourses: ["Math", "JavaScript"]}, {name: "Alice", enrolledCourses: ["JavaScript"]}]}}]
-const filterCoursesByMultipleEnrollments = function (courses) { };
+const filterCoursesByMultipleEnrollments = function (courses) {
+  return courses.filter(({ course }) => course.students.some(({ enrolledCourses }) => enrolledCourses.length > 0));
+};
+
+// console.log(filterCoursesByMultipleEnrollments([{ course: { name: "JavaScript", students: [{ name: "Tom", enrolledCourses: ["Math", "JavaScript"] }, { name: "Alice", enrolledCourses: ["JavaScript"] }] } }]));
 
 // Filter restaurants where at least one menu item is vegetarian [{restaurant: {name: "Vegan Bistro", menu: [{item: "Tofu Stir Fry", type: "vegetarian"}, {item: "Chicken Salad", type: "non-vegetarian"}]}}] => [{restaurant: {name: "Vegan Bistro", menu: [{item: "Tofu Stir Fry", type: "vegetarian"}, {item: "Chicken Salad", type: "non-vegetarian"}]}}]
-const filterRestaurantsByVegetarianMenuItem = function (restaurants) { };
+const filterRestaurantsByVegetarianMenuItem = function (restaurants) {
+  return restaurants.filter(({ restaurant }) =>
+    restaurant.menu.some(({ type }) => type === "vegetarian"));
+};
+
+// console.log(filterRestaurantsByVegetarianMenuItem([{ restaurant: { name: "Vegan Bistro", menu: [{ item: "Tofu Stir Fry", type: "vegetarian" }, { item: "Chicken Salad", type: "non-vegetarian" }] } }]));
 
 // Filter employees where at least one project is high priority [{employee: {name: "Jane", projects: [{name: "Project A", priority: "high"}, {name: "Project B", priority: "low"}]}}] => [{employee: {name: "Jane", projects: [{name: "Project A", priority: "high"}, {name: "Project B", priority: "low"}]}}]
-const filterEmployeesByHighPriorityProject = function (employees) { };
+const filterEmployeesByHighPriorityProject = function (employees) {
+  return employees.filter(({ employee }) =>
+    employee.projects.some(({ priority }) => priority === "high"));
+};
+
+// console.log(filterEmployeesByHighPriorityProject([{ employee: { name: "Jane", projects: [{ name: "Project A", priority: "high" }, { name: "Project B", priority: "low" }] } }]));
 
 // Filter orders where at least one item is from a specific category [{order: {items: [{name: "Laptop", category: "Electronics"}, {name: "Shoes", category: "Apparel"}]}}] => [{order: {items: [{name: "Laptop", category: "Electronics"}, {name: "Shoes", category: "Apparel"}]}}]
-const filterOrdersByCategory = function (orders, category) { };
+const filterOrdersByCategory = function (orders, category) {
+  return orders.filter(({ order }) =>
+    order.items.some((item) => item.category === category));
+};
+
+// console.log(filterOrdersByCategory([{ order: { items: [{ name: "Laptop", category: "Electronics" }, { name: "Shoes", category: "Apparel" }] } }], "Electronics"));
 
 // Filter events where at least one speaker has a specific expertise [{event: {name: "Tech Talk", speakers: [{name: "Alice", expertise: "AI"}, {name: "Bob", expertise: "Web Development"}]}}] => [{event: {name: "Tech Talk", speakers: [{name: "Alice", expertise: "AI"}, {name: "Bob", expertise: "Web Development"}]}}]
-const filterEventsBySpeakerExpertise = function (events, expertise) { };
+const filterEventsBySpeakerExpertise = function (events, expertise) {
+  return events.filter(({ event }) =>
+    event.speakers.some(speaker => speaker.expertise === expertise));
+};
+
+// console.log(filterEventsBySpeakerExpertise([{ event: { name: "Tech Talk", speakers: [{ name: "Alice", expertise: "AI" }, { name: "Bob", expertise: "Web Development" }] } }], "AI"));
 
 // Filter users who have at least one post with more than a certain number of comments [{user: {name: "John", posts: [{title: "Post 1", comments: 100}, {title: "Post 2", comments: 5}]}}] => [{user: {name: "John", posts: [{title: "Post 1", comments: 100}, {title: "Post 2", comments: 5}]}}]
-const filterUsersByPostComments = function (users, minComments) { };
+const filterUsersByPostComments = function (users, minComments) {
+  return users.filter(({ user }) => user.posts.some(({ comments }) => comments > minComments));
+};
+
+// console.log(filterUsersByPostComments([{ user: { name: "John", posts: [{ title: "Post 1", comments: 100 }, { title: "Post 2", comments: 5 }] } }], 10));
 
 // Filter users who have at least one post in a specific category [{user: {name: "Anna", posts: [{title: "Post 1", category: "Food"}, {title: "Post 2", category: "Travel"}]}}] => [{user: {name: "Anna", posts: [{title: "Post 1", category: "Food"}, {title: "Post 2", category: "Travel"}]}}]
-const filterUsersByPostCategory = function (users, category) { };
+const filterUsersByPostCategory = function (users, category) {
+  return users.filter(({ user }) => user.posts.some(post => post.category === category));
+};
+
+// console.log(filterUsersByPostCategory([{ user: { name: "Anna", posts: [{ title: "Post 1", category: "Food" }, { title: "Post 2", category: "Travel" }] } }], "Travel"));
 
 // Filter posts that have at least one hashtag from a list of trending hashtags [{post: {title: "Post 1", hashtags: ["#food", "#vegan"]}}] => [{post: {title: "Post 1", hashtags: ["#food", "#vegan"]}}]
-const filterPostsByHashtags = function (posts, trendingHashtags) { };
+const filterPostsByHashtags = function (posts, trendingHashtags) {
+  return posts.filter(({ post }) => post.hashtags.some(tag => tag === trendingHashtags));
+};
+
+// console.log(filterPostsByHashtags([{ post: { title: "Post 1", hashtags: ["#food", "#vegan"] } }], "#food"));
 
 // Filter users who have shared at least one post that received a specific number of likes [{user: {name: "Lucy", posts: [{title: "Post 1", likes: 500}, {title: "Post 2", likes: 100}]}}] => [{user: {name: "Lucy", posts: [{title: "Post 1", likes: 500}, {title: "Post 2", likes: 100}]}}]
-const filterUsersByMinPostLikes = function (users, minLikes) { };
+const filterUsersByMinPostLikes = function (users, minLikes) {
+  return users.filter(({ user }) => user.posts.some(({ likes }) => likes > minLikes));
+};
+
+// console.log(filterUsersByMinPostLikes([{ user: { name: "Lucy", posts: [{ title: "Post 1", likes: 500 }, { title: "Post 2", likes: 100 }] } }], 100));
 
 // Filter users who have at least one post where the caption contains a specific word [{user: {name: "Sara", posts: [{title: "Post 1", caption: "Amazing sunset!"}, {title: "Post 2", caption: "Another day, another adventure!"}]}}] => [{user: {name: "Sara", posts: [{title: "Post 1", caption: "Amazing sunset!"}, {title: "Post 2", caption: "Another day, another adventure!"}]}}]
-const filterUsersByPostCaption = function (users, word) { };
+const filterUsersByPostCaption = function (users, word) {
+  return users.filter(({ user }) => user.posts.some(({ caption }) => caption === word));
+};
+
+console.log(filterUsersByPostCaption([{ user: { name: "Sara", posts: [{ title: "Post 1", caption: "Amazing sunset!" }, { title: "Post 2", caption: "Another day, another adventure!" }] } }], "Another day, another adventure!"));
