@@ -411,23 +411,6 @@ const filterProjectsByTeamSizeAndStatus = function (projects, teamSizeThreshold,
 
 // console.log(filterProjectsByTeamSizeAndStatus([{ team: { members: ["Alice", "Bob"], size: 2 }, project: { completed: false } }], 2, false));
 
-// Filter job candidates based on years of experience and their skills [{skills: {languages: ["JavaScript", "Python"]}, experience: {years: 5}}] => [{skills: {languages: ["JavaScript", "Python"]}, experience: {years: 5}}]
-const filterCandidatesByExperienceAndSkills = function (candidates, experienceThreshold, requiredSkills) {
-  const sortedSkills = requiredSkills.sort();
-
-  return candidates.filter(candidate => {
-    const sortedCandidateSkills = candidate.skills.languages.sort();
-
-    for (let index = 0; index < sortedCandidateSkills.length; index++) {
-      if (!(sortedCandidateSkills[index] === sortedSkills[index])) {
-        return false;
-      }
-    }
-
-    return candidate.experience.years === experienceThreshold;
-  });
-};
-
 
 //Similar
 // Filter events based on location and date [{location: {city: "New York"}, date: {eventDate: "2022-07-01"}}] => [{location: {city: "New York"}, date: {eventDate: "2022-07-01"}}]

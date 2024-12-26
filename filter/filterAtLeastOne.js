@@ -1,3 +1,19 @@
+// Filter job candidates based on years of experience and their skills [{skills: {languages: ["JavaScript", "Python"]}, experience: {years: 5}}] => [{skills: {languages: ["JavaScript", "Python"]}, experience: {years: 5}}]
+const filterCandidatesByExperienceAndSkills = function (candidates, experienceThreshold, requiredSkills) {
+  const sortedSkills = requiredSkills.sort();
+
+  return candidates.filter(candidate => {
+    const sortedCandidateSkills = candidate.skills.languages.sort();
+
+    for (let index = 0; index < sortedCandidateSkills.length; index++) {
+      if (!(sortedCandidateSkills[index] === sortedSkills[index])) {
+        return false;
+      }
+    }
+
+    return candidate.experience.years === experienceThreshold;
+  });
+};
 
 // console.log(filterCandidatesByExperienceAndSkills([{ skills: { languages: ["JavaScript", "Python"] }, experience: { years: 5 } }], 5, ["JavaScript", "Python"]));
 
