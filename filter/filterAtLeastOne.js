@@ -35,41 +35,88 @@ const filterOrdersByItemPrice = function (orders, maxPrice) {
 //   { order: { items: [{ product: "T-Shirt", price: 120 }, { product: "Ring", price: 50 }] } }
 // ], 40));
 
-// Similar
 // Filter events where at least one speaker is a particular person [{event: {name: "Tech Talk", speakers: [{name: "John"}, {name: "Alice"}]}}] => [{event: {name: "Tech Talk", speakers: [{name: "John"}, {name: "Alice"}]}}]
-const filterEventsBySpeaker = function (events, speakerName) { };
+const filterEventsBySpeaker = function (events, speakerName) {
+  return events
+    .filter(program => {
+      return program.event.speakers.some(({ name }) => name === speakerName);
+    });
+};
+
+// console.log(filterEventsBySpeaker([{ event: { name: "Tech Talk", speakers: [{ name: "John" }, { name: "Alice" }] } }, { event: { name: "Tech Talk", speakers: [{ name: "John" }, { name: "Bob" }] } }], "Bob"));
 
 // Filter students where at least one class has a passing grade [{student: {name: "Tom", classes: [{name: "Math", grade: "B"}, {name: "History", grade: "C"}]}}] => [{student: {name: "Tom", classes: [{name: "Math", grade: "B"}, {name: "History", grade: "C"}]}}]
-const filterStudentsByClassGrade = function (students, passingGrade) { };
+const filterStudentsByClassGrade = function (students, passingGrade) {
+  return students
+    .filter(({ student }) => student.classes.every(({ grade }) => grade < passingGrade));
+};
+
+// console.log(filterStudentsByClassGrade([{ student: { name: "Tom", classes: [{ name: "Math", grade: "B" }, { name: "History", grade: "C" }] } }, { student: { name: "Tom", classes: [{ name: "Math", grade: "D" }, { name: "History", grade: "C" }] } }], "D"));
 
 // Filter employees where at least one project has been completed [{employee: {name: "Alice", projects: [{name: "Project X", completed: true}, {name: "Project Y", completed: false}]}}] => [{employee: {name: "Alice", projects: [{name: "Project X", completed: true}, {name: "Project Y", completed: false}]}}]
-const filterEmployeesByCompletedProject = function (employees) { };
+const filterEmployeesByCompletedProject = function (employees) {
+  return employees.filter(({ employee }) => employee.projects.some(({ completed }) => completed));
+};
+
+// console.log(filterEmployeesByCompletedProject([{ employee: { name: "Alice", projects: [{ name: "Project X", completed: true }, { name: "Project Y", completed: false }] } }, { employee: { name: "Bob", projects: [{ name: "Project X", completed: false }, { name: "Project Y", completed: true }] } }]));
 
 // Filter courses where at least one module has been completed [{course: {title: "JavaScript 101", modules: [{name: "Intro", completed: true}, {name: "Advanced", completed: false}]}}] => [{course: {title: "JavaScript 101", modules: [{name: "Intro", completed: true}, {name: "Advanced", completed: false}]}}]
-const filterCoursesByCompletedModule = function (courses) { };
+const filterCoursesByCompletedModule = function (courses) {
+  return courses.filter(({ course }) => course.modules.some(({ completed }) => completed));
+};
 
+// console.log(filterCoursesByCompletedModule([{ course: { title: "JavaScript 101", modules: [{ name: "Intro", completed: true }, { name: "Advanced", completed: false }] } }]));
 
 // Filter organizations where one of the branches has a high rating [{organization: {name: "Tech Co", branches: [{name: "NYC", rating: 4.5}, {name: "LA", rating: 3.8}]}}] => [{organization: {name: "Tech Co", branches: [{name: "NYC", rating: 4.5}, {name: "LA", rating: 3.8}]}}]
-const filterOrganizationsByBranchRating = function (organizations, minRating) { };
+const filterOrganizationsByBranchRating = function (organizations, minRating) {
+  return organizations.filter(({ organization }) => organization.branches.some(({ rating }) => rating > minRating));
+};
+
+// console.log(filterOrganizationsByBranchRating([{ organization: { name: "Tech Co", branches: [{ name: "NYC", rating: 4.5 }, { name: "LA", rating: 3.8 }] } }], 4));
 
 // Filter candidates where at least one job experience is in a specific industry [{candidate: {name: "Alice", experiences: [{company: "Tech Inc", industry: "Software"}, {company: "Retail Corp", industry: "Retail"}]}}] => [{candidate: {name: "Alice", experiences: [{company: "Tech Inc", industry: "Software"}, {company: "Retail Corp", industry: "Retail"}]}}]
-const filterCandidatesByIndustryExperience = function (candidates, industry) { };
+const filterCandidatesByIndustryExperience = function (candidates, industry) {
+  return candidates.filter(({ candidate }) => candidate.experiences.some((exp) => exp.industry === industry));
+};
+
+// console.log(filterCandidatesByIndustryExperience([{ candidate: { name: "Alice", experiences: [{ company: "Tech Inc", industry: "Software" }, { company: "Retail Corp", industry: "Retail" }] } }], "Software"));
 
 // Filter cars where at least one feature is electric [{car: {model: "Tesla", features: [{type: "electric", name: "autopilot"}, {type: "gas", name: "V6 engine"}]}}] => [{car: {model: "Tesla", features: [{type: "electric", name: "autopilot"}, {type: "gas", name: "V6 engine"}]}}]
-const filterCarsByFeatureType = function (cars, featureType) { };
+const filterCarsByFeatureType = function (cars, featureType) {
+  return cars.filter(({ car }) => car.features.some(({ type }) => type === featureType));
+};
+
+// console.log(filterCarsByFeatureType([{ car: { model: "Tesla", features: [{ type: "electric", name: "autopilot" }, { type: "gas", name: "V6 engine" }] } }], "electric"));
 
 // Filter teams where at least one member has a specific skill [{team: {name: "Dev Team", members: [{name: "Alice", skills: ["JavaScript", "React"]}, {name: "Bob", skills: ["Python", "Django"]}]}}] => [{team: {name: "Dev Team", members: [{name: "Alice", skills: ["JavaScript", "React"]}, {name: "Bob", skills: ["Python", "Django"]}]}}]
-const filterTeamsBySkill = function (teams, skill) { };
+const filterTeamsBySkill = function (teams, skill) {
+  return teams.filter(({ team }) => team.members.some(({ skills }) => skills.includes(skill)));
+};
+
+// console.log(filterTeamsBySkill([{ team: { name: "Dev Team", members: [{ name: "Alice", skills: ["JavaScript", "React"] }, { name: "Bob", skills: ["Python", "Django"] }] } }], "React"));
 
 // Filter students where at least one grade is above a certain threshold [{student: {name: "Tom", grades: [{subject: "Math", grade: 85}, {subject: "English", grade: 72}]}}] => [{student: {name: "Tom", grades: [{subject: "Math", grade: 85}, {subject: "English", grade: 72}]}}]
-const filterStudentsByGrade = function (students, minGrade) { };
+const filterStudentsByGrade = function (students, minGrade) {
+  return students.filter(({ student }) => student.grades.some(({ grade }) => grade > minGrade));
+};
+
+// console.log(filterStudentsByGrade([{ student: { name: "Tom", grades: [{ subject: "Math", grade: 85 }, { subject: "English", grade: 72 }] } }], 72));
 
 // Filter books where at least one author has won a specific award [{book: {title: "Book 1", authors: [{name: "Author A", awards: ["Pulitzer"]}, {name: "Author B", awards: ["Nobel"]}]}}] => [{book: {title: "Book 1", authors: [{name: "Author A", awards: ["Pulitzer"]}, {name: "Author B", awards: ["Nobel"]}]}}]
-const filterBooksByAward = function (books, award) { };
+const filterBooksByAward = function (books, award) {
+  return books.filter(({ book }) => book.authors.some((author) => author.awards.includes(award)));
+};
+
+// console.log(filterBooksByAward([{ book: { title: "Book 1", authors: [{ name: "Author A", awards: ["Pulitzer"] }, { name: "Author B", awards: ["Nobel"] }] } }], "Pulitzer"));
 
 // Filter users where at least one post has more than a specific number of likes [{user: {name: "John", posts: [{title: "Post 1", likes: 150}, {title: "Post 2", likes: 20}]}}] => [{user: {name: "John", posts: [{title: "Post 1", likes: 150}, {title: "Post 2", likes: 20}]}}]
-const filterUsersByPostLikes = function (users, minLikes) { };
+const filterUsersByPostLikes = function (users, minLikes) {
+  return users.filter(({ user }) => user.posts.some(({ likes }) => likes > minLikes));
+};
 
+console.log(filterUsersByPostLikes([{ user: { name: "John", posts: [{ title: "Post 1", likes: 150 }, { title: "Post 2", likes: 20 }] } }], 100));
+
+// Similar
 // Filter cities where at least one attraction is in a specific category [{city: {name: "Paris", attractions: [{name: "Eiffel Tower", category: "landmark"}, {name: "Louvre", category: "museum"}]}}] => [{city: {name: "Paris", attractions: [{name: "Eiffel Tower", category: "landmark"}, {name: "Louvre", category: "museum"}]}}]
 const filterCitiesByAttractionCategory = function (cities, category) { };
 
